@@ -32,7 +32,7 @@ const getRobotBySeries = (series=1) =>{
 
 console.log(getRobotBySeries(2));
 console.table(getRobotBySeries(2));
-
+//Crea formato de la carta
 const createCard = (series, id, name, weapon, avatar, sprite1) => {
     return `
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -48,13 +48,11 @@ const createCard = (series, id, name, weapon, avatar, sprite1) => {
         </div>
     `;
 };
-
+//Le asigna los valores a cada card
 const robotCardsRow = document.getElementById(`robotCardsRow`);
-let cardsHTML = ""; // Variable para almacenar las cadenas HTML
 
-robots.forEach((robot) => {
+robots.map((robot) => {
     const card = createCard(robot.series, robot.id, robot.name, robot.weapon, robot.avatar, robot.sprite1);
-    cardsHTML += card; // Agregar la tarjeta al HTML acumulado
+    robotCardsRow.innerHTML += card; // Agregar la tarjeta al HTML acumulado
 });
 
-robotCardsRow.innerHTML = cardsHTML; // Una vez que se han construido todas las tarjetas, se adjunta al DOM de una vez
